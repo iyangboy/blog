@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function () {
+    // 在 "App\Http\Controllers\Admin" 命名空间下的控制器
+    Route::get('/admin', 'AdminController@index');
+});
