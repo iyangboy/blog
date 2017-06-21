@@ -14,6 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    echo date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), 1, date("Y")));
+    echo '<br>';
+    echo mktime(0, 0, 0, date("m"), 1, date("Y"));
+});
+Route::get('/test2', function () {
+    \Illuminate\Support\Facades\DB::select('select * from products where id = :id', ['id' => 1]);
+});
 
 Auth::routes();
 
